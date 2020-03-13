@@ -15,30 +15,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9j-lx-yOO">
-                                <rect key="frame" x="109" y="244" width="205" height="94"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8m9-Yx-Dbq">
+                                <rect key="frame" x="153" y="279" width="109" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startStopTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dmh-cc-3Qr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVP-Fo-Hhg">
+                                <rect key="frame" x="0.0" y="333" width="414" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="WC8-Gz-2XT"/>
+                                    <constraint firstAttribute="height" constant="79" id="x2v-Oe-9AE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pcn-dt-cq2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6K-sb-wHZ">
+                                <rect key="frame" x="48" y="200" width="231" height="48"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMH-cw-oju">
-                                <rect key="frame" x="181.5" y="446" width="51" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="switchTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ecw-kL-CoK"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH3-dk-9nM">
+                                <rect key="frame" x="279" y="200" width="87" height="48"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="s9j-lx-yOO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="109" id="7Kx-zv-THx"/>
-                            <constraint firstItem="s9j-lx-yOO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="XbV-nn-v3B"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s9j-lx-yOO" secondAttribute="trailing" constant="109" id="Zoh-lK-YAX"/>
-                            <constraint firstItem="s9j-lx-yOO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cbT-EP-R0z"/>
-                            <constraint firstItem="hMH-cw-oju" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="d5D-gE-S8u"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hMH-cw-oju" secondAttribute="bottom" constant="321" id="dP8-Ic-b83"/>
-                            <constraint firstItem="hMH-cw-oju" firstAttribute="top" secondItem="s9j-lx-yOO" secondAttribute="bottom" constant="108" id="wPY-65-7Gk"/>
+                            <constraint firstItem="bH3-dk-9nM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="156" id="8bf-rD-ZJl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8m9-Yx-Dbq" secondAttribute="trailing" constant="152" id="CIL-hF-RmB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bH3-dk-9nM" secondAttribute="trailing" constant="48" id="ErX-sI-9tA"/>
+                            <constraint firstItem="8m9-Yx-Dbq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="153" id="XXo-ld-dK3"/>
+                            <constraint firstItem="FVP-Fo-Hhg" firstAttribute="top" secondItem="8m9-Yx-Dbq" secondAttribute="bottom" constant="8" id="iN6-CF-6IU"/>
+                            <constraint firstItem="8m9-Yx-Dbq" firstAttribute="top" secondItem="a6K-sb-wHZ" secondAttribute="bottom" constant="31" id="k4E-Je-z5y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FVP-Fo-Hhg" secondAttribute="bottom" constant="401" id="nfp-hl-STF"/>
+                            <constraint firstItem="a6K-sb-wHZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="156" id="nt1-dH-CfO"/>
+                            <constraint firstItem="a6K-sb-wHZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="rBi-TM-zt6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -47,7 +69,10 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="timerOutlet" destination="s9j-lx-yOO" id="11z-Z6-JOx"/>
+                        <outlet property="fractionsLabel" destination="bH3-dk-9nM" id="4ft-DF-6d4"/>
+                        <outlet property="resetButton" destination="FVP-Fo-Hhg" id="OI7-cC-PcI"/>
+                        <outlet property="startStopButton" destination="8m9-Yx-Dbq" id="meg-KD-wt8"/>
+                        <outlet property="timerLabel" destination="a6K-sb-wHZ" id="pzf-z1-ycz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

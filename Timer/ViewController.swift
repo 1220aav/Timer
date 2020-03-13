@@ -9,44 +9,76 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // MARK: - Outlets
-    @IBOutlet weak var timerOutlet: UILabel!
     
-    var counter = 0.0
+    // MARK: - Properties
     var timer = Timer()
-    var isCounterON = false
-
+    var isCounting = false
+    var (hours, minutes, seconds, fractions) = (0, 0, 0, 0)
+    
+    // MARK: - Outlets
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var fractionsLabel: UILabel!
+    @IBOutlet weak var startStopButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        timerOutlet.text = String(counter)
+        startStopButton.tintColor = UIColor.systemBlue
+        resetButton.tintColor = UIColor.systemRed
+        resetButton.isHidden = true
     }
     
     // MARK: - Actions
-    
-    @IBAction func switchTimer(_ sender: UIButton) {
-        if !isCounterON {
-            startTimer()
-            sender.setTitle("Pause", for: .normal)
-            sender.tintColor = UIColor.systemRed
+    @IBAction func startStopTimer(_ sender: UIButton) {
+        if !isCounting {
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(keepTimer), userInfo: nil, repeats: true)
+            isCounting = true
+            keepTimer()
+            startStopButton.setTitle("Stop", for: .normal)
+            startStopButton.tintColor = UIColor.systemRed
+            resetButton.isHidden = true
         } else {
-            stopTimer()
-            sender.setTitle("Play", for: .normal)
-            sender.tintColor = UIColor.systemBlue
+            timer.invalidate()
+            isCounting = false
+            startStopButton.setTitle("Start", for: .normal)
+            startStopButton.tintColor = UIColor.systemBlue
+            resetButton.isHidden = false
         }
+        
     }
     
-    private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        isCounterON = true
-    }
-    
-    private func stopTimer() {
+    @IBAction func resetTimer(_ sender: UIButton) {
         timer.invalidate()
-        isCounterON = false
+        (hours, minutes, seconds, fractions) = (0, 0, 0, 0)
+        timerLabel.text = "00:00:00"
+        fractionsLabel.text = ".00"
+        startStopButton.setTitle("Start", for: .normal)
+        startStopButton.tintColor = UIColor.systemBlue
+        resetButton.isHidden = true
     }
     
-    @objc private func updateTimer() {
-        counter += 0.1
-        timerOutlet.text = String(format: "%.1f", counter)
+    // MARK: - Helpers
+    @objc func keepTimer() {
+        let fractionsString = ".\(fractions)"
+        let secondsString = seconds <= 9 ? "0\(seconds)" : "\(seconds)"
+        let minutesString = minutes <= 9 ? "0\(minutes)" : "\(minutes)"
+        let hoursString = hours <= 9 ? "0\(hours)" : "\(hours)"
+        
+        
+        fractions += 1
+        fractionsLabel.text = fractionsString
+        if fractions > 99 {
+            seconds += 1
+            fractions = 0
+        }
+        if seconds == 60 {
+            minutes += 1
+            seconds = 0
+        }
+        if minutes == 60 {
+            hours += 1
+            minutes = 0
+        }
+        timerLabel.text = "\(hoursString):\(minutesString):\(secondsString)"
     }
 }
