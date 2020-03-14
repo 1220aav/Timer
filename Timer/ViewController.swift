@@ -64,7 +64,6 @@ class ViewController: UIViewController {
         let minutesString = minutes <= 9 ? "0\(minutes)" : "\(minutes)"
         let hoursString = hours <= 9 ? "0\(hours)" : "\(hours)"
         
-        
         fractions += 1
         fractionsLabel.text = fractionsString
         if fractions > 99 {
@@ -80,5 +79,23 @@ class ViewController: UIViewController {
             minutes = 0
         }
         timerLabel.text = "\(hoursString):\(minutesString):\(secondsString)"
+    }
+}
+
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 0
+    }
+
+    // Provide a cell object for each row.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       // Fetch a cell of the appropriate type.
+       let cell = tableView.dequeueReusableCell(withIdentifier: "cellTypeIdentifier", for: indexPath)
+       
+       // Configure the cell’s contents.
+       cell.textLabel!.text = "Cell text"
+           
+       return cell
     }
 }
