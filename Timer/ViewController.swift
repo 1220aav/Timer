@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func stopTimer() {
         timer.invalidate()
         isCounting = false
-        startStopButton.setTitle("Start", for: .normal)
+        startStopButton.setTitle("Resume", for: .normal)
         startStopButton.tintColor = UIColor.systemBlue
         resetButton.isHidden = false
         
