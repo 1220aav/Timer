@@ -8,24 +8,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
     var timer = Timer()
     var isCounting = false
     var (hours, minutes, seconds, fractions) = (0, 0, 0, 0)
+    
+    var laps = [Lap]()
     
     // MARK: - Outlets
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var fractionsLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         startStopButton.tintColor = UIColor.systemBlue
         resetButton.tintColor = UIColor.systemRed
         resetButton.isHidden = true
+        tableView.tableFooterView = UIView()
     }
     
     // MARK: - Actions
@@ -66,6 +70,12 @@ class ViewController: UIViewController {
         startStopButton.setTitle("Start", for: .normal)
         startStopButton.tintColor = UIColor.systemBlue
         resetButton.isHidden = false
+        
+        let lapTime = timerLabel.text!
+        let lap = Lap(lapTime: lapTime)
+        laps.append(lap)
+//        tableView.reloadData()
+        tableView.insertRows(at: [(NSIndexPath(row: laps.count-1, section: 0) as IndexPath)], with: .automatic)
     }
     
     @objc func keepTimer() {
@@ -90,22 +100,22 @@ class ViewController: UIViewController {
         }
         timerLabel.text = "\(hoursString):\(minutesString):\(secondsString)"
     }
-}
-
-
-extension ViewController: UITableViewDataSource {
+    
+    // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 0
+        return laps.count
     }
-
-    // Provide a cell object for each row.
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // Fetch a cell of the appropriate type.
-       let cell = tableView.dequeueReusableCell(withIdentifier: "cellTypeIdentifier", for: indexPath)
-       
-       // Configure the cell’s contents.
-       cell.textLabel!.text = "Cell text"
-           
-       return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellForLap", for: indexPath)
+        
+        let lap = laps[indexPath.row]
+        cell.textLabel?.text = lap.lapTime
+        
+        
+        return cell
     }
+    
+    
 }

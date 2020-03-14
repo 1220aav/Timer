@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2067201241D4CDD001E7ABD /* LapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2067200241D4CDD001E7ABD /* LapModel.swift */; };
 		B250DDAA241A3A550077B6B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250DDA9241A3A550077B6B3 /* AppDelegate.swift */; };
 		B250DDAC241A3A550077B6B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250DDAB241A3A550077B6B3 /* SceneDelegate.swift */; };
 		B250DDAE241A3A550077B6B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250DDAD241A3A550077B6B3 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2067200241D4CDD001E7ABD /* LapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapModel.swift; sourceTree = "<group>"; };
 		B250DDA6241A3A550077B6B3 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B250DDA9241A3A550077B6B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B250DDAB241A3A550077B6B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				B250DDA9241A3A550077B6B3 /* AppDelegate.swift */,
 				B250DDAB241A3A550077B6B3 /* SceneDelegate.swift */,
 				B250DDAD241A3A550077B6B3 /* ViewController.swift */,
+				B2067200241D4CDD001E7ABD /* LapModel.swift */,
 				B250DDAF241A3A550077B6B3 /* Main.storyboard */,
 				B250DDB2241A3A590077B6B3 /* Assets.xcassets */,
 				B250DDB4241A3A590077B6B3 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				B250DDAE241A3A550077B6B3 /* ViewController.swift in Sources */,
 				B250DDAA241A3A550077B6B3 /* AppDelegate.swift in Sources */,
 				B250DDAC241A3A550077B6B3 /* SceneDelegate.swift in Sources */,
+				B2067201241D4CDD001E7ABD /* LapModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
