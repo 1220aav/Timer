@@ -51,6 +51,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         startStopButton.setTitle("Start", for: .normal)
         startStopButton.tintColor = UIColor.systemBlue
         resetButton.isHidden = true
+        
+        laps = []
+        tableView.reloadData()
     }
     
     // MARK: - Helpers
@@ -74,8 +77,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let lapTime = timerLabel.text!
         let lap = Lap(lapTime: lapTime)
         laps.append(lap)
-//        tableView.reloadData()
-        tableView.insertRows(at: [(NSIndexPath(row: laps.count-1, section: 0) as IndexPath)], with: .automatic)
+        
+        tableView.insertRows(at: [IndexPath(row: laps.count-1, section: 0)], with: .automatic)
     }
     
     @objc func keepTimer() {
