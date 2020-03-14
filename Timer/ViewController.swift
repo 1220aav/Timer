@@ -31,21 +31,13 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func startStopTimer(_ sender: UIButton) {
         if !isCounting {
-            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(keepTimer), userInfo: nil, repeats: true)
-            isCounting = true
-            keepTimer()
-            startStopButton.setTitle("Stop", for: .normal)
-            startStopButton.tintColor = UIColor.systemRed
-            resetButton.isHidden = true
+            startTimer()
         } else {
-            timer.invalidate()
-            isCounting = false
-            startStopButton.setTitle("Start", for: .normal)
-            startStopButton.tintColor = UIColor.systemBlue
-            resetButton.isHidden = false
+            stopTimer()
         }
         
     }
+    
     
     @IBAction func resetTimer(_ sender: UIButton) {
         timer.invalidate()
@@ -58,6 +50,24 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(keepTimer), userInfo: nil, repeats: true)
+        self.isCounting = true
+        keepTimer()
+        startStopButton.setTitle("Stop", for: .normal)
+        startStopButton.tintColor = UIColor.systemRed
+        resetButton.isHidden = true
+    }
+    
+    func stopTimer() {
+        timer.invalidate()
+        isCounting = false
+        startStopButton.setTitle("Start", for: .normal)
+        startStopButton.tintColor = UIColor.systemBlue
+        resetButton.isHidden = false
+    }
+    
     @objc func keepTimer() {
         let fractionsString = ".\(fractions)"
         let secondsString = seconds <= 9 ? "0\(seconds)" : "\(seconds)"
